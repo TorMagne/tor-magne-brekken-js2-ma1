@@ -22,8 +22,6 @@ const fakeInfo = async () => {
     const response = await fetch(url);
     const productArray = await response.json();
 
-    console.log(productArray);
-
     // let productArray = products;
 
     productsContainer.innerHTML = '';
@@ -43,8 +41,6 @@ const fakeInfo = async () => {
           cssClass = 'fas';
         }
 
-        console.log(product.price);
-
         productsContainer.innerHTML += `<div class="product">
                                         <h4 class="product-title">${product.title}</h4>
                                         <img src="${product.image}" alt="">
@@ -56,16 +52,19 @@ const fakeInfo = async () => {
     // invoking the rendering function for json
     renderProduct();
 
-    search.onkeyup = function (event) {
-      const searchValue = event.target.value.trim();
+    // search.onkeyup = function (event) {
+    //   const searchValue = event.target.value.trim().toLowerCase();
 
-      const filteredProducts = productArray.filter(function (product) {
-        if (product.price >= searchValue) {
-          return true;
-        }
-        console.log(filteredProducts);
-      });
-    };
+    //   const filteredProducts = products.filter(function (product) {
+    //     if (product.title.toLowerCase().startWith(searchValue)) {
+    //       return true;
+    //     }
+    //   });
+    //   console.log(filteredProducts);
+
+    //   productArray = filteredProducts;
+    //   renderProduct();
+    // };
 
     // getting the input and making a new array based on the price
     // const findNumberValue = (event) => {
