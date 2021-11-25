@@ -1,9 +1,11 @@
+// import { renderProduct } from './ui/renderProductArray.js';
 import { getExsitingWhistlist } from './utils/wishesFunctions.js';
 
 const wishes = getExsitingWhistlist();
 
 const url = 'https://fakestoreapi.com/products/category/jewelery';
 const productsContainer = document.querySelector('.products-container');
+const search = document.querySelector('.search');
 productsContainer.innerHTML = ` <div class="bouncer-box">
                                 <div class="bouncer">
                                 <div></div>
@@ -18,32 +20,60 @@ productsContainer.innerHTML = ` <div class="bouncer-box">
 const fakeInfo = async () => {
   try {
     const response = await fetch(url);
-    const json = await response.json();
+    const productArray = await response.json();
 
-    console.log(json);
+    console.log(productArray);
+
+    // let productArray = products;
 
     productsContainer.innerHTML = '';
 
-    json.forEach((product) => {
-      let cssClass = 'far';
-      // check to wish array
-      // does product id exist in the wish array
-      const doesObjectExsist = wishes.find(function (wish) {
-        return parseInt(wish.id) === product.id;
+    // renderProduct here
+    const renderProduct = () => {
+      productArray.forEach((product) => {
+        let cssClass = 'far';
+        // check to wish array
+        // does product id exist in the wish array
+        const doesObjectExsist = wishes.find(function (wish) {
+          return parseInt(wish.id) === product.id;
+        });
+
+        // if it's in the array change style of heart
+        if (doesObjectExsist) {
+          cssClass = 'fas';
+        }
+
+        productsContainer.innerHTML += `<div class="product">
+                                        <h4 class="product-title">${product.title}</h4>
+                                        <img src="${product.image}" alt="">
+                                        <span class="price-span">Price: $${product.price}</span>
+                                        <i class="${cssClass} fa-heart" data-id="${product.id}" data-name="${product.title}" data-price="${product.price}" data-image="${product.image}">`;
+      });
+    };
+    // invoking the rendering function for json
+    renderProduct();
+
+    // getting the input and making a new array based on the price
+    const findNumberValue = (event) => {
+      const searchValue = event.target.value.trim();
+      console.log(searchValue);
+
+      const filteredNumberValue = productArray.filter((product) => {
+        if (product <= searchValue) {
+          return true;
+        }
       });
 
-      // if it's in the array change style of heart
-      if (doesObjectExsist) {
-        cssClass = 'fas';
-      }
+      console.log(filteredNumberValue);
 
-      productsContainer.innerHTML += `<div class="product">
-                                      <h4 class="product-title">${product.title}</h4>
-                                      <img src="${product.image}" alt="">
-                                      <span class="price-span">Price: $${product.price}</span>
-                                      <i class="${cssClass} fa-heart" data-id="${product.id}" data-name="${product.title}" data-price="${product.price}" data-image="${product.image}">`;
-    });
+      // productArray = filteredNumberValue;
 
+      renderProduct();
+    };
+
+    search.onkeyup = findNumberValue;
+
+    // wishbutton
     const wishListButtons = document.querySelectorAll('.product i');
 
     const handleClick = (e) => {
