@@ -20,7 +20,7 @@ productsContainer.innerHTML = ` <div class="bouncer-box">
 const fakeInfo = async () => {
   try {
     const response = await fetch(url);
-    const productArray = await response.json();
+    let productArray = await response.json();
 
     console.log(productArray);
 
@@ -66,7 +66,7 @@ const fakeInfo = async () => {
 
       console.log(filteredNumberValue);
 
-      // productArray = filteredNumberValue;
+      productArray = filteredNumberValue;
 
       renderProduct();
     };
