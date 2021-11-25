@@ -1,0 +1,139 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 100%;
+  font-family: 'Roboto', sans-serif;
+}
+
+img {
+  width: 50px;
+  height: auto;
+  margin: auto auto;
+  padding-bottom: 2rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  padding: 2rem 0 1rem 2rem;
+}
+
+input {
+  margin: 0 0 1rem 2rem;
+  padding: 0.5rem 1rem;
+}
+
+ul li:first-child {
+  margin-right: 1rem;
+}
+
+ul li a {
+  text-decoration: none;
+  font-size: 1rem;
+  color: dimgrey;
+}
+
+h1 {
+  padding-left: 2rem;
+  font-size: 1.5rem;
+}
+
+.active {
+  color: darkred;
+}
+
+.container {
+  max-width: 950px;
+  margin: 15px auto;
+}
+
+.products-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.product {
+  margin: 1rem;
+  padding: 1rem;
+  background: white;
+  border: 1px solid lightgray;
+  border-radius: 1rem;
+  min-width: 200px;
+  max-width: 200px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-title {
+  margin-bottom: 1rem;
+}
+
+.price-span {
+  padding-top: 0.5rem;
+  position: absolute;
+  bottom: 10px;
+}
+
+.product i {
+  font-size: 1.3rem;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  cursor: pointer;
+}
+
+.product i.fas {
+  color: maroon;
+}
+/* bounder */
+.bouncer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  width: 140px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.bouncer-box {
+  width: 100%;
+  margin: 4rem 0 3rem 0;
+}
+
+.bouncer div {
+  width: 20px;
+  height: 20px;
+  background-color: #0077ff;
+  border-radius: 50%;
+  animation: bouncer 0.5s cubic-bezier(0.19, 0.57, 0.3, 0.98) infinite alternate;
+}
+
+.bouncer div:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.bouncer div:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.bouncer div:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.bouncer div:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.bouncer div:nth-child(6) {
+  animation-delay: 0.5s;
+}
+
+@keyframes bouncer {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-100px);
+  }
+}
