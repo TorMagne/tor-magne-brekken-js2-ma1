@@ -1,18 +1,15 @@
-// export const findNumberValue = (event, product) => {
-//   const searchValue = event.target.value.trim();
-//   console.log(searchValue);
+export function renderProductsNumber() {
+  const search = document.querySelector('.search');
+  search.onkeyup = function (event) {
+    const searchValue = event.target.value.trim();
 
-//   const filteredNumberValue = productArray.filter((product) => {
-//     if (product <= searchValue) {
-//       return true;
-//     }
-//   });
+    const filteredProducts = productArray.filter(function (product) {
+      if (product.price >= searchValue) {
+        return true;
+      }
+      console.log(filteredProducts);
+    });
+  };
+}
 
-//   console.log(filteredNumberValue);
-
-//   // productArray = filteredNumberValue;
-
-//   renderProduct(filteredNumberValue);
-// };
-
-// search.onkeyup = findNumberValue;
+renderProductsNumber();

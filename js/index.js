@@ -20,7 +20,7 @@ productsContainer.innerHTML = ` <div class="bouncer-box">
 const fakeInfo = async () => {
   try {
     const response = await fetch(url);
-    let productArray = await response.json();
+    const productArray = await response.json();
 
     console.log(productArray);
 
@@ -43,6 +43,8 @@ const fakeInfo = async () => {
           cssClass = 'fas';
         }
 
+        console.log(product.price);
+
         productsContainer.innerHTML += `<div class="product">
                                         <h4 class="product-title">${product.title}</h4>
                                         <img src="${product.image}" alt="">
@@ -50,28 +52,40 @@ const fakeInfo = async () => {
                                         <i class="${cssClass} fa-heart" data-id="${product.id}" data-name="${product.title}" data-price="${product.price}" data-image="${product.image}">`;
       });
     };
+
     // invoking the rendering function for json
     renderProduct();
 
-    // getting the input and making a new array based on the price
-    const findNumberValue = (event) => {
+    search.onkeyup = function (event) {
       const searchValue = event.target.value.trim();
-      console.log(searchValue);
 
-      const filteredNumberValue = productArray.filter((product) => {
-        if (product <= searchValue) {
+      const filteredProducts = productArray.filter(function (product) {
+        if (product.price >= searchValue) {
           return true;
         }
+        console.log(filteredProducts);
       });
-
-      console.log(filteredNumberValue);
-
-      productArray = filteredNumberValue;
-
-      renderProduct();
     };
 
-    search.onkeyup = findNumberValue;
+    // getting the input and making a new array based on the price
+    // const findNumberValue = (event) => {
+    //   const searchValue = event.target.value.trim();
+    //   console.log(searchValue);
+
+    //   const filteredNumberValue = productArray.filter((product) => {
+    //     if (product >= searchValue) {
+    //       return true;
+    //     }
+    //   });
+
+    //   console.log(filteredNumberValue);
+
+    //   productArray = filteredNumberValue;
+
+    //   renderProduct();
+    // };
+
+    // search.onkeyup = findNumberValue;
 
     // wishbutton
     const wishListButtons = document.querySelectorAll('.product i');
