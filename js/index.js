@@ -29,11 +29,8 @@ const fakeInfo = async () => {
       // check to wish array
       // does product id exist in the wish array
       const doesObjectExsist = wishes.find(function (wish) {
-        console.log(wish);
         return parseInt(wish.id) === product.id;
       });
-
-      console.log(doesObjectExsist);
 
       // if it's in the array change style of heart
       if (doesObjectExsist) {
