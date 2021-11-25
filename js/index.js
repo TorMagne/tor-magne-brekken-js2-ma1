@@ -1,6 +1,6 @@
 import { getExsitingWhistlist } from './utils/wishesFunctions.js';
 
-const wishes = getExsitingWhistlist;
+const wishes = getExsitingWhistlist();
 
 const url = 'https://fakestoreapi.com/products/category/jewelery';
 const productsContainer = document.querySelector('.products-container');
@@ -26,19 +26,19 @@ const fakeInfo = async () => {
 
     json.forEach((product) => {
       let cssClass = 'far';
-      // // check to wish array
-      // // does product id exist in the wish array
-      // const doesObjectExsist = wishes.find(function (wish) {
-      //   console.log(wish);
-      //   return parseInt(wish.id) === product.id;
-      // });
+      // check to wish array
+      // does product id exist in the wish array
+      const doesObjectExsist = wishes.find(function (wish) {
+        console.log(wish);
+        return parseInt(wish.id) === product.id;
+      });
 
-      // console.log(doesObjectExsist);
+      console.log(doesObjectExsist);
 
-      // // if it's in the array change style of heart
-      // if (doesObjectExsist) {
-      //   cssClass = 'fas';
-      // }
+      // if it's in the array change style of heart
+      if (doesObjectExsist) {
+        cssClass = 'fas';
+      }
 
       productsContainer.innerHTML += `<div class="product">
                                       <h4 class="product-title">${product.title}</h4>
