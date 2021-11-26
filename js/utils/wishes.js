@@ -4,8 +4,8 @@ const wishes = getExsitingWhistlist();
 
 const productsContainer = document.querySelector('.products-container');
 
-if (wishes.lengt === 0) {
-  productsContainer.innerHTML = 'Nothing';
+if (wishes.length === 0) {
+  productsContainer.innerHTML = 'No wishes added';
 }
 
 wishes.forEach((wish) => {
