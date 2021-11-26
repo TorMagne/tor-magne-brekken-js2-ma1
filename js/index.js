@@ -1,6 +1,7 @@
 import { renderFakeProducts } from './ui/renderProducts.js';
 import { searchFakeProducts } from './ui/searchProducts.js';
 import { getExsitingWhistlist } from './utils/wishesFunction.js';
+import { displayMessage } from './ui/displayMessage.js';
 
 const url = 'https://fakestoreapi.com/products';
 
@@ -48,6 +49,7 @@ async function getFakeProducts() {
     };
   } catch (error) {
     console.log(error);
+    displayMessage('error', 'An error occurred', '.products-container');
   }
 }
 

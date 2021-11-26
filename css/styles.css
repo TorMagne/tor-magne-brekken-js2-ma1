@@ -137,3 +137,12 @@ h1 {
     transform: translateY(-100px);
   }
 }
+
+.message {
+  color: gray;
+}
+
+.message.error {
+  border-color: red;
+  color: red;
+}
