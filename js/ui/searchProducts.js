@@ -3,7 +3,7 @@ export function searchFakeProducts(products) {
   const search = document.querySelector('.search');
 
   search.onkeyup = function (event) {
-    const searchValue = event.target.value.trim();
+    const searchValue = Number(event.target.value.trim());
 
     const filteredFakeProducts = products.filter(function (products) {
       if (products.price <= searchValue) {
@@ -11,6 +11,10 @@ export function searchFakeProducts(products) {
       }
     });
 
-    renderFakeProducts(filteredFakeProducts);
+    if (filteredFakeProducts.length === 0) {
+      renderFakeProducts(products);
+    } else {
+      renderFakeProducts(filteredFakeProducts);
+    }
   };
 }
