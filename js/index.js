@@ -48,7 +48,6 @@ async function getFakeProducts() {
       localStorage.setItem('wishlist', JSON.stringify(wishes));
     };
   } catch (error) {
-    console.log(error);
     displayMessage('error', 'An error occurred', '.products-container');
   }
 }
